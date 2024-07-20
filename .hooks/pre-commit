@@ -1,0 +1,18 @@
+#! /bin/sh
+
+echo "Running linting and formatting"
+
+# Run the linter
+
+just fmt
+
+# Run the formatter
+
+$lint_result = just lint
+
+if [ $lint_result -ne 0 ]; then
+    echo "Linting failed"
+    exit 1
+fi
+
+echo "Linting passed"

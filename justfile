@@ -32,3 +32,6 @@ default:
 
 changelog:
     git cliff -o CHANGELOG.md
+
+hooks:
+    cp -r .hooks/* .git/hooks
