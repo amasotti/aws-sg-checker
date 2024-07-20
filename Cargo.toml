@@ -1,0 +1,10 @@
+[package]
+name = "sg_tools"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aws-config = "1.5.4"
+aws-sdk-ec2 = "1.60.0"
+clap = { version = "4.5.9", features = ["cargo"] }
+tokio = { version = "1.38.1", features = ["macros"] }
