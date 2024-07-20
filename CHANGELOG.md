@@ -2,11 +2,37 @@
 
 All notable changes to this project will be documented in this file (created with git cliff).
 
+## [0.0.2] - 2024-07-20
+
+[Compare with last version](https://github.com/amasotti/rust-json-reader/compare/1896c4b202ef3a020dcc18f3d82bb9843a9c70f0..0ca2eacf5e9ebec572e7f91f46bd89ca03d66446)
+### 🚀 Features
+
+
+- Enable latest behaviour feature ([4c9aff4](https://github.com/amasotti/rust-json-reader/commit/4c9aff490d4114ad3da27b46f309b840626ba77a))
+
+- Add justfile ([b7f56aa](https://github.com/amasotti/rust-json-reader/commit/b7f56aa60d3efb206827abc9c08ce210139a5484))
+
+### 🚜 Refactor
+
+
+- Better region handling ([9f64bbe](https://github.com/amasotti/rust-json-reader/commit/9f64bbe6d6e11f7291061d566eba0c969ada37b7))
+
+### 📚 Documentation
+
+
+- Add changelog ([d1c7c3b](https://github.com/amasotti/rust-json-reader/commit/d1c7c3bc4b99894727927c0f081b83f53b7a20b5))
+
+- Add documentation strings ([ab7f66a](https://github.com/amasotti/rust-json-reader/commit/ab7f66ace66a8b2f32b95edb30d043e9b92a1782))
+
+### ⚙️ Miscellaneous Tasks
+
+
+- Cargo fmt && lint ([0ca2eac](https://github.com/amasotti/rust-json-reader/commit/0ca2eacf5e9ebec572e7f91f46bd89ca03d66446))
+
 ## [0.0.1] - 2024-07-20
-Repository rebuilt from scratch. It contains basic interactions with 
-AWS Security Groups.
 
 ### 🚀 Features
+
 
 - Init repo ([1896c4b](https://github.com/amasotti/rust-json-reader/commit/1896c4b202ef3a020dcc18f3d82bb9843a9c70f0))
 
