@@ -1,23 +1,19 @@
 use aws_config::{BehaviorVersion, Region, SdkConfig};
 use aws_config::default_provider::credentials::DefaultCredentialsChain;
-use aws_config::meta::region::RegionProviderChain;
 use aws_sdk_ec2::Client as Ec2Client;
 
 /// Connect to AWS using the provided profile and region
 async fn connect_to_aws(profile: String, region: String) -> SdkConfig {
 
-    let region = Region::new(region.to_owned());
-    let provider_region = RegionProviderChain::first_try(region)
-        .or_else("eu-central-1");
-
+    let region = Region::new(region);
     let creds = DefaultCredentialsChain::builder()
         .profile_name(profile.as_str())
-        .region(provider_region)
         .build()
         .await;
 
     aws_config::defaults(BehaviorVersion::latest())
         .credentials_provider(creds)
+        .region(region)
         .load()
         .await
 }
