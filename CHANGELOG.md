@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file (created with git cliff).
 
+## [0.0.3] - 2024-07-20
+
+[Compare with last version](https://github.com/amasotti/rust-json-reader/compare/0ca2eacf5e9ebec572e7f91f46bd89ca03d66446..facc37144962aa994ca935ed3d1d7afa3c897386)
+### 🚀 Features
+
+
+- Add git hooks ([14355ed](https://github.com/amasotti/rust-json-reader/commit/14355ed52385982b390f196bbcf09a37a424c13b))
+
+- Add check for sec token in ec2 instances ([429a976](https://github.com/amasotti/rust-json-reader/commit/429a976caf30b2b85f82ef6bd564755e158d222c))
+
+### 🐛 Bug Fixes
+
+
+- Make hooks executable ([29306ff](https://github.com/amasotti/rust-json-reader/commit/29306ff55dc7daa4d945de42c5f27433a37a6ba2))
+
+- Make hooks executable ([9524c34](https://github.com/amasotti/rust-json-reader/commit/9524c3438f2d0478a193793d6cb760c33fb9cf36))
+
+### 📚 Documentation
+
+
+- Changelog update ([2c3ae71](https://github.com/amasotti/rust-json-reader/commit/2c3ae71157ae30e769fadb090166581dff053047))
+
+### ⚙️ Miscellaneous Tasks
+
+
+- Cargo fmt && lint ([facc371](https://github.com/amasotti/rust-json-reader/commit/facc37144962aa994ca935ed3d1d7afa3c897386))
+
 ## [0.0.2] - 2024-07-20
 
 [Compare with last version](https://github.com/amasotti/rust-json-reader/compare/1896c4b202ef3a020dcc18f3d82bb9843a9c70f0..0ca2eacf5e9ebec572e7f91f46bd89ca03d66446)
