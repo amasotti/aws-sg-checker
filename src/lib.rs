@@ -15,6 +15,7 @@ use clap::{command, Arg, Command};
 
 mod check_cidrs;
 mod list_sg;
+mod describe_ec2;
 
 /// Create the main command for the CLI
 pub fn sg_tools_command() -> Command {
@@ -34,6 +35,7 @@ pub fn sg_tools_command() -> Command {
                     PossibleValue::new("find-default-ingress"),
                     PossibleValue::new("find-default-egress"),
                     PossibleValue::new("find-all-ports"),
+                    PossibleValue::new("ec2-no-sec-token"),
                 ]),
         )
         .arg(
@@ -84,6 +86,7 @@ pub async fn process_command(args: &clap::ArgMatches, client: Ec2Client) {
         "find-default-ingress" => check_cidrs::find_sg_default_ingress(client).await,
         "find-default-egress" => check_cidrs::find_sg_default_egress(client).await,
         "find-all-ports" => check_cidrs::find_sg_all_ports(client).await,
+        "ec2-no-sec-token" => describe_ec2::ec2_instances_without_sec_token(client).await,
         _ => panic!("Invalid operation"),
     }
 }
