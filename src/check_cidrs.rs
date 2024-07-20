@@ -1,6 +1,6 @@
-use aws_sdk_ec2::Client as Ec2Client;
-use aws_sdk_ec2::operation::describe_security_groups::{DescribeSecurityGroupsOutput};
+use aws_sdk_ec2::operation::describe_security_groups::DescribeSecurityGroupsOutput;
 use aws_sdk_ec2::types::Filter;
+use aws_sdk_ec2::Client as Ec2Client;
 
 /// Default value for the CIDR to search
 const DEFAULT_ROUTE_VALUE: &str = "0.0.0.0/0";
@@ -15,8 +15,6 @@ const DEFAULT_ROUTE_VALUE: &str = "0.0.0.0/0";
 ///
 /// Nothing, it prints the security groups with too wide ingress rules in the console
 pub async fn find_sg_default_ingress(ec2_client: Ec2Client) {
-
-
     let filter_ingress = Filter::builder()
         .name("ip-permission.cidr")
         .values(DEFAULT_ROUTE_VALUE)
@@ -88,11 +86,7 @@ pub async fn find_sg_all_ports(ec2_client: Ec2Client) {
 ///
 /// * `ec2_client` - The EC2 client to use
 pub async fn describe_all_sg(ec2_client: Ec2Client) {
-    let sg_descr = ec2_client
-        .describe_security_groups()
-        .send()
-        .await
-        .unwrap();
+    let sg_descr = ec2_client.describe_security_groups().send().await.unwrap();
 
     print_sg_description(sg_descr)
 }
@@ -152,7 +146,10 @@ fn print_sg_description(sg_desc: DescribeSecurityGroupsOutput) {
             ip_permissions.iter().for_each(|ip_perm| {
                 println!("\tFrom port: {:?}", ip_perm.from_port.unwrap_or(-1));
                 println!("\tTo port: {:?}", ip_perm.to_port.unwrap_or(-1));
-                println!("\tProtocol: {:?}", ip_perm.ip_protocol.as_ref().unwrap_or(&"all".to_string()));
+                println!(
+                    "\tProtocol: {:?}",
+                    ip_perm.ip_protocol.as_ref().unwrap_or(&"all".to_string())
+                );
 
                 if let Some(ip_ranges) = &ip_perm.ip_ranges {
                     ip_ranges.iter().for_each(|ip_range| {
@@ -163,14 +160,19 @@ fn print_sg_description(sg_desc: DescribeSecurityGroupsOutput) {
             });
         }
 
-
         // Outbound rules
         println!("Outbound rules:");
         if let Some(ip_permissions_egress) = &sg.ip_permissions_egress {
             ip_permissions_egress.iter().for_each(|ip_perm_egress| {
                 println!("\tFrom port: {:?}", ip_perm_egress.from_port.unwrap_or(-1));
                 println!("\tTo port: {:?}", ip_perm_egress.to_port.unwrap_or(-1));
-                println!("\tProtocol: {:?}", ip_perm_egress.ip_protocol.as_ref().unwrap_or(&"all".to_string()));
+                println!(
+                    "\tProtocol: {:?}",
+                    ip_perm_egress
+                        .ip_protocol
+                        .as_ref()
+                        .unwrap_or(&"all".to_string())
+                );
 
                 if let Some(ip_ranges) = &ip_perm_egress.ip_ranges {
                     ip_ranges.iter().for_each(|ip_range| {

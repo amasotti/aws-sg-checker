@@ -9,13 +9,12 @@
 //! sg-tools -o list
 //! ```
 
-
-use clap::{Arg, command, Command};
 use aws_sdk_ec2::Client as Ec2Client;
 use clap::builder::PossibleValue;
+use clap::{command, Arg, Command};
 
-mod list_sg;
 mod check_cidrs;
+mod list_sg;
 
 /// Create the main command for the CLI
 pub fn sg_tools_command() -> Command {
@@ -35,7 +34,7 @@ pub fn sg_tools_command() -> Command {
                     PossibleValue::new("find-default-ingress"),
                     PossibleValue::new("find-default-egress"),
                     PossibleValue::new("find-all-ports"),
-                ])
+                ]),
         )
         .arg(
             Arg::new("profile")
@@ -43,7 +42,7 @@ pub fn sg_tools_command() -> Command {
                 .long("profile")
                 .help("AWS Profile to use")
                 .default_missing_value("default")
-                .default_value("default")
+                .default_value("default"),
         )
         .arg(
             Arg::new("region")
@@ -51,7 +50,7 @@ pub fn sg_tools_command() -> Command {
                 .long("region")
                 .help("AWS Region to use")
                 .default_value("eu-central-1")
-                .default_missing_value("eu-central-1")
+                .default_missing_value("eu-central-1"),
         )
 }
 
@@ -75,8 +74,8 @@ pub fn sg_tools_command() -> Command {
 /// * `find-all-ports` - Find security groups with all ports open
 ///
 pub async fn process_command(args: &clap::ArgMatches, client: Ec2Client) {
-
-    let operation = args.get_one::<String>("operation")
+    let operation = args
+        .get_one::<String>("operation")
         .expect("Operation is required");
 
     match operation.as_str() {
@@ -85,6 +84,6 @@ pub async fn process_command(args: &clap::ArgMatches, client: Ec2Client) {
         "find-default-ingress" => check_cidrs::find_sg_default_ingress(client).await,
         "find-default-egress" => check_cidrs::find_sg_default_egress(client).await,
         "find-all-ports" => check_cidrs::find_sg_all_ports(client).await,
-        _ => panic!("Invalid operation")
+        _ => panic!("Invalid operation"),
     }
 }
