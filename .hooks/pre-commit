@@ -8,7 +8,7 @@ just fmt
 
 # Run the formatter
 
-$lint_result = just lint
+lint_result = $(just lint)
 
 if [ $lint_result -ne 0 ]; then
     echo "Linting failed"
