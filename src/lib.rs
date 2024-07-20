@@ -14,8 +14,8 @@ use clap::builder::PossibleValue;
 use clap::{command, Arg, Command};
 
 mod check_cidrs;
-mod list_sg;
 mod describe_ec2;
+mod list_sg;
 
 /// Create the main command for the CLI
 pub fn sg_tools_command() -> Command {
